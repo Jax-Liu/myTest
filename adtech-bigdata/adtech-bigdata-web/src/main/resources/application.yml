@@ -1,0 +1,32 @@
+server:
+  port : 8089
+  #定义session超时时间为20分钟
+  session :
+    timeout : 1800
+spring:
+  data:
+    mongodb:
+      uri: mongodb://localhost:27017/admin
+  thymeleaf:
+    prefix: classpath:/templates/
+    suffix: .html
+    cache: false
+    mode : LEGACYHTML5
+  cache:
+      #缓存名称
+    cache-names: dpsmenu
+      #缓存最大数量800条, 缓存失效时间 6个小时
+    guava.spec: maximumSize=800,expireAfterWrite=360m
+  http:
+    multipart:
+      enabled: true
+      #限制单个文件大小
+      max-file-size: 10MB
+      #限制多个文件大小
+      max-request-size: 20MB
+  profiles:
+    active: test
+#日志
+logging:
+    level:
+      org.springframework.data.mongodb: debug                
